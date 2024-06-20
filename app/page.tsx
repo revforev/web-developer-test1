@@ -12,32 +12,49 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <h1>Image Gallery</h1>
-      <button onClick={handleSort}>Reverse Order</button>
-      <div className="gallery">
-        {images.map((image, index) => (
-          <div key={index} className="gallery-item">
-            <div className="image-container">
-              <div className="image-block">
-                <img src={`/images/${image.filename}`} alt={image.altText} />
+    <div className="page-container">
+      <main>
+        <h1>Image Gallery</h1>
+        <button onClick={handleSort}>Reverse Order</button>
+        <div className="gallery">
+          {images.map((image, index) => (
+            <div key={index} className="gallery-item">
+              <div className="image-container">
+                <div className="image-block">
+                  <img src={`/images/${image.filename}`} alt={image.altText} />
+                  <div className="image-digit">{image.digit}</div>
+                </div>
               </div>
-              <div className="image-digit">{image.digit}</div>
+              <p>{image.altText}</p>
             </div>
-            <p>{image.altText}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </main>
       <style jsx>{`
-        .gallery {
+        .page-container {
           display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #f0f0f0;
+          padding: 20px;
+        }
+        main {
+          width: 100%;
+          max-width: 1200px;
+          background-color: white;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .gallery {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+          margin-top: 20px;
+          justify-items: center;
         }
         .gallery-item {
-          flex: 1 1 calc(25% - 20px);
-          box-sizing: border-box;
-          margin: 10px;
           text-align: center;
         }
         .image-container {
@@ -46,23 +63,25 @@ export default function Home() {
         }
         .image-block {
           width: 100%;
-          padding-top: 100%; /* 1:1 aspect ratio */
-          background-color: #0070f3; /* Blue color */
+          padding-top: 100%;
+          background-color: #0070f3;
           position: relative;
+          border-radius: 10px;
         }
         .image-block img {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
-          height: auto;
+          height: 100%;
+          object-fit: cover;
         }
         .image-digit {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          font-size: 24px;
+          font-size: 16px;
           color: white;
           font-weight: bold;
           z-index: 1;
@@ -84,13 +103,11 @@ export default function Home() {
         button:hover {
           background-color: #005bb5;
         }
-        main {
-          padding: 20px;
-        }
         h1 {
           margin-bottom: 20px;
+          text-align: center;
         }
       `}</style>
-    </main>
+    </div>
   );
 }
