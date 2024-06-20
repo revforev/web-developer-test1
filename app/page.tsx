@@ -1,14 +1,22 @@
 'use client';
+'use client';
 import {useGalleryData} from '@/lib/useGalleryData';
+import {useState} from 'react';
 
 export default function Home() {
   const {data} = useGalleryData();
+  const [images, setImages] = useState(data);
+
+  const handleSort = () => {
+    setImages([...images].reverse());
+  };
 
   return (
     <main>
       <h1>Image Gallery</h1>
+      <button onClick={handleSort}>Reverse Order</button>
       <div className="gallery">
-        {data.map((image, index) => (
+        {images.map((image, index) => (
           <div key={index} className="gallery-item">
             <img src={`/images/${image.filename}`} alt={image.altText} />
             <p>{image.altText}</p>
@@ -30,6 +38,15 @@ export default function Home() {
           max-width: 100%;
           height: auto;
           display: block;
+        }
+        button {
+          margin-bottom: 20px;
+        }
+        main {
+          padding: 20px;
+        }
+        h1 {
+          margin-bottom: 20px;
         }
       `}</style>
     </main>
