@@ -1,9 +1,10 @@
-'use client'
-import { useGalleryData } from "@/lib/useGalleryData";
-import { useState } from 'react';
+// ./app/page.tsx
+'use client';
+import {useGalleryData} from '@/lib/useGalleryData';
+import {useState} from 'react';
 
 export default function Home() {
-  const { data } = useGalleryData();
+  const {data} = useGalleryData();
   const [images, setImages] = useState(data);
 
   const handleSort = () => {
@@ -17,7 +18,12 @@ export default function Home() {
       <div className="gallery">
         {images.map((image, index) => (
           <div key={index} className="gallery-item">
-            <img src={`/images/${image.filename}`} alt={image.altText} />
+            <div className="image-container">
+              <div className="image-block">
+                <img src={`/images/${image.filename}`} alt={image.altText} />
+              </div>
+              <div className="image-digit">{image.digit}</div>
+            </div>
             <p>{image.altText}</p>
           </div>
         ))}
@@ -32,11 +38,37 @@ export default function Home() {
           flex: 1 1 calc(25% - 20px);
           box-sizing: border-box;
           margin: 10px;
+          text-align: center;
         }
-        img {
-          max-width: 100%;
+        .image-container {
+          position: relative;
+          overflow: hidden;
+        }
+        .image-block {
+          width: 100%;
+          padding-top: 100%; /* 1:1 aspect ratio */
+          background-color: #0070f3; /* Blue color */
+          position: relative;
+        }
+        .image-block img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
           height: auto;
-          display: block;
+        }
+        .image-digit {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 24px;
+          color: white;
+          font-weight: bold;
+          z-index: 1;
+        }
+        p {
+          margin-top: 10px;
         }
         button {
           margin-bottom: 20px;
