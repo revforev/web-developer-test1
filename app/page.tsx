@@ -1,10 +1,9 @@
-'use client';
-'use client';
-import {useGalleryData} from '@/lib/useGalleryData';
-import {useState} from 'react';
+'use client'
+import { useGalleryData } from "@/lib/useGalleryData";
+import { useState } from 'react';
 
 export default function Home() {
-  const {data} = useGalleryData();
+  const { data } = useGalleryData();
   const [images, setImages] = useState(data);
 
   const handleSort = () => {
@@ -41,6 +40,17 @@ export default function Home() {
         }
         button {
           margin-bottom: 20px;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          background-color: #0070f3;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+        }
+        button:hover {
+          background-color: #005bb5;
         }
         main {
           padding: 20px;
