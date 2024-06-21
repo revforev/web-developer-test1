@@ -21,8 +21,7 @@ export default function Home() {
             <div key={index} className="gallery-item">
               <div className="image-container">
                 <div className="image-block">
-                  <img src={`/images/${image.filename}`} alt={image.altText} />
-                  <div className="image-digit">{image.digit}</div>
+                  <img src={`/img/${image.filename}`} alt={image.altText} />
                 </div>
               </div>
               <p>{image.altText}</p>
@@ -64,7 +63,6 @@ export default function Home() {
         .image-block {
           width: 100%;
           padding-top: 100%;
-          background-color: #0070f3;
           position: relative;
           border-radius: 10px;
         }
@@ -75,16 +73,7 @@ export default function Home() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-        }
-        .image-digit {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 16px;
-          color: white;
-          font-weight: bold;
-          z-index: 1;
+          border-radius: 10px;
         }
         p {
           margin-top: 10px;
