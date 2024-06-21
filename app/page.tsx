@@ -54,8 +54,8 @@ export default function Home() {
         }
         .gallery {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
+          grid-template-columns: repeat(4, auto);
+          gap: 10px;
           margin-top: 20px;
           justify-items: center;
         }
@@ -64,11 +64,13 @@ export default function Home() {
         }
         .image-container {
           width: 100%;
-          height: auto;
+          height: 200px;
+          overflow: hidden;
         }
         .image-container img {
           width: 100%;
-          height: auto;
+          height: 100%;
+          object-fit: cover;
           display: block;
         }
         p {
