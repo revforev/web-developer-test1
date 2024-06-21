@@ -2,9 +2,9 @@ import {useState} from 'react';
 
 const galleryJSON: string = `[
   { "filename": "Image-1.png", "altText": "Image One"},
-  { "filename": "Image-number-2.png", "altText": "Image Two"},
+  { "filename": "Image-2.png", "altText": "Image Two"},
   { "filename": "Image-3.png", "altText": "Image Three"},
-  { "filename": "Image-number-4.png", "altText": "Image Four"},
+  { "filename": "Image-4.png", "altText": "Image Four"},
   { "filename": "Image-5.png", "altText": "Image Five"},
   { "filename": "Image-6.png", "altText": "Image Six"},
   { "filename": "Image-7.png", "altText": "Image Seven"},
